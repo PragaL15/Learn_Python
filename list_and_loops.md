@@ -713,4 +713,116 @@ else:
      print()
 ```
 ---
-24. 
+24. To print the prime number star pattern ,  it iterates over each row and checks whether the row number is prime or not. If it's prime, it prints '*' for that row.
+
+```python
+def isPrime(n):
+  if n<=1:
+    return False
+  for i in range(2,int(n**0.5)+1):
+    if n%i==0:
+      return False
+  return True
+  
+row = int(input())
+for i in range(1,row+1):
+  if isPrime(i):
+    print('* ' *i)
+```
+i/p - 8
+o/p 
+```
+* * 
+* * * 
+* * * * * 
+* * * * * * * 
+```
+---
+25. Finding the LCM and GCD.
+
+```python
+def gcdcheck(num1,num2):
+ while num2!=0:
+   temp = num2
+   num2=num1%num2
+   num1=temp
+ return num1
+
+def lcmcheck(num1,num2):
+  gcd = gcdcheck(num1,num2)
+  lcm = (num1*num2)//gcd
+  return lcm
+  
+num1 = int(input())
+num2 = int(input())
+lcm = lcmcheck(num1,num2)
+print(lcm)
+```
+---
+26. . The
+program should then simulate handshakes between each pair of people and Count the total number
+of handshakes that occur. Print out the total number of handshakes.
+
+```python
+def handshake(n):
+ if n<=1:
+   return 0
+ return n* (n-1) // 2
+num = int(input())
+total = handshake(num)
+print(total)
+```
+---
+27. To calculate the sum of series The students are tasked with Craft, a program that calculates the sum of the series 1 - (x^2)/2! +
+(x^4)/4! - (x^6)/6! + ... The program should prompt the user to input the value of 'x' and the number
+of terms 'n' in the series.
+
+
+```python
+import math 
+def cal_sum_series(x,n):
+  series_num=1 
+  sign = -1
+  for i in range(1,n):
+   term = (x**(2*i))/math.factorial(2*i)
+   series_num+=sign*term
+   sign*=-1
+  return series_num
+
+x = float(input())
+y = int(input())
+if y <= 0:
+    print("The number of terms must be a positive integer.")
+else:
+    result = cal_sum_series(x, y)
+    print(f"The sum of the series is: {result:.2f}")
+  ```
+---
+28. Craft a program that takes an integer as input and performs the following operation using only the
+bitwise XOR operator:
+- If the input number is even, divide it by 2.
+- If the input number is odd, multiply it by 3 and add 1.
+- Continue this process until the resulting number is 1. Count and return the number of steps
+taken to reach 1.
+
+```python
+def collatz_steps(n):
+    if n <= 0:
+        return "Input must be a positive integer."
+    steps = 0
+    while n != 1:
+        if n & 1 == 0: 
+            n //= 2    
+        else:
+            n = n * 3 + 1  
+        steps += 1
+    return steps
+num = int(input())
+if num > 0:
+    result = collatz_steps(num)
+    print(f"Number of steps to reach 1: {result}")
+else:
+    print("Please enter a positive integer.")
+```
+---
+29. 

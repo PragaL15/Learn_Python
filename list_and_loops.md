@@ -309,26 +309,22 @@ else:
 ```python
 def isPrime(n):
   if n<=1:
-    return false 
+    return False 
   for i in range(2, int(n**0.5)+1):
     if n%i==0:
       return False 
   return True 
       
-def nxtPrime(start,count=5):
- prime = []
- nextNum = start+1
- while len(prime)<count:
-   if isPrime(nextNum):
-     prime.append(nextNum)
-   nextNum+=1 
- return prime
 
-num = int(input())
-if num<=0:
- print("Invalid Input")
-else:
- print(f"the next prime numbers are {nxtPrime(num)}")
+n = int(input())
+start =0
+count=0
+nextNum = start+1
+while 5>count:
+   if isPrime(nextNum):
+     print(nextNum)
+     count+=1
+   nextNum+=1 
 ```
 ---
 3. To find if the given is prime num or composite num

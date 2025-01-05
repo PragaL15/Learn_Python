@@ -35,9 +35,41 @@ my_list.append(item)
 print("Your list is:", my_list)
 ```
 - using `append()` will create a nested list line [["app","web"]]
-- using `extend()` will add each item in the list as a seperate item in the list.
+- using `extend()` will add each item in the list as a seperate item in the list. 
 
+**or**
+```python
+my_list = []
+my_list2 = []
+item = input().split(" ")
+my_list = item
+for my in my_list:
+ print(f"{my} ",end="")
+```
 
+**or**
+
+- Print using the `range()` in the for loop.
+```python
+my_list = []
+my_list2 = []
+item = input().split(" ")
+my_list = item
+for my in range(len(my_list)):
+ print(f"{my_list[my]} ",end="")
+```
+**or**
+- Using the while loop.
+```python
+my_list = []
+my_list2 = []
+item = input().split(" ")
+my_list = item
+i=0
+while i < len(my_list):
+ print(f"{my_list[i]} ",end="")
+ i+=1
+```
 ---
 3. Check if the particular word is in the list or not.
 
@@ -178,7 +210,10 @@ my_list = item
 my_list.pop(2)
 print(my_list)
 ```
+- This will remove the word from the particular index.
+
 **or**
+
 ```python
 my_list = []
 my_list2 = []
@@ -187,7 +222,20 @@ my_list = item
 del my_list[0]
 print(my_list)
 ```
-
-- This will remove the word from the particular index.
+- By using the `del` we could delete the list completly.
 ---
-13. 
+13. To make an empty list.
+
+**using `clear()`**:
+```python
+my_list = []
+my_list2 = []
+item = input().split(" ")
+my_list = item
+my_list.clear()
+print(my_list)
+```
+---
+#### List Comprehension in Python
+
+1. 

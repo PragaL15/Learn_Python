@@ -238,4 +238,479 @@ print(my_list)
 ---
 #### List Comprehension in Python
 
-1. 
+1. Basic List Comprehension by getting input from user and multiply the number by 2 and print their output.
+
+```python
+my_list =[]
+user = input()
+my_list=[int(num) for num in user.split(" ")]
+squares = [x*2 for x in my_list]
+print(squares)
+```
+---
+2. Along with for loop use the if condition also and print the results which passes the condition.
+
+```python
+my_list =[]
+user = input()
+my_list=[int(num) for num in user.split(" ")]
+squares = [x*2 for x in my_list if x%3==0 and x%4==0]
+print(squares)
+```
+---
+3. Having both `if` and `else` statements on same code.
+
+```python
+my_list =[]
+user = input()
+my_list=[int(num) for num in user.split(" ")]
+squares = ["Even" if x%2==0 else "odd" for x in my_list]
+print(squares)
+```
+---
+4. Nested loop example
+
+```python
+my_list =[]
+user = input()
+my_list=[int(num) for num in user.split(" ")]
+squares = [(x,y) for x in range(1,5) for y in range(1,3) if(x+y)%2==0]
+print(squares)
+```
+- In this range(1,5) - it includes 1,2,3,4.
+- the first for loop is outer and next is inner loop.
+
+---
+
+### Loops questions
+
+1. Fibonacci series , sum and the nth term.
+
+```python
+def fibo(n):
+  if n<=1:
+    return n 
+  return fibo(n-1)+fibo(n-2)
+
+num = int(input())
+if(num<=0):
+ print("Invalid Input")
+else:
+  fib_series = [fibo(i) for i in range(num)]
+  nth = fib_series[-1]
+  sum_total = sum(fib_series)
+  print(f"Fibonacci series:{fib_series}")
+  print(f"{nth}")
+  print(f"{sum_total}")
+```
+---
+2. To find the next five prime numbers starting from the given number .
+
+```python
+def isPrime(n):
+  if n<=1:
+    return false 
+  for i in range(2, int(n**0.5)+1):
+    if n%i==0:
+      return False 
+  return True 
+      
+def nxtPrime(start,count=5):
+ prime = []
+ nextNum = start+1
+ while len(prime)<count:
+   if isPrime(nextNum):
+     prime.append(nextNum)
+   nextNum+=1 
+ return prime
+
+num = int(input())
+if num<=0:
+ print("Invalid Input")
+else:
+ print(f"the next prime numbers are {nxtPrime(num)}")
+```
+---
+3. To find if the given is prime num or composite num
+
+```python
+def isPrime(n):
+  if n<=1:
+    return False 
+  for i in range(2, int(n**0.5)+1):
+    if n%i==0:
+      return False 
+  return True 
+      
+num = int(input())
+if isPrime(num):
+ print("Prime number")
+else:
+ print(f"Composite number")
+```
+---
+4. To print the sum of series of the given num and number of terms is also gvn 
+ex: 3 4 --> 3+33+333+3333 = 3702
+
+```python
+def sumSeries(n,count):
+  if n<=0:
+    return 0
+    
+  sumNum = 0
+  res = 0
+  place = 1;
+  for i in range(1,count+1):
+      res = n*place + res
+      sumNum+=res
+      place*=10
+  return sumNum
+      
+num = int(input())
+count = int(input())
+result = sumSeries(num,count)
+print(result)
+```
+---
+5. If the divison's sum is equal to the given number , print it's equal number else print not an equal number
+
+```python
+num = int(input())
+sumNum =0
+for i in range(1,num):
+  if num%i==0:
+   sumNum+=i
+
+if(num==sumNum):
+ print("equal number")
+else:
+  print("Not an equal number")
+```
+---
+6. Check if given is Abundant num or not ( if the sum of divisors are greater than the num)
+
+```python
+num = int(input())
+sumNum =0
+for i in range(1,num):
+  if num%i==0:
+   sumNum+=i
+
+if(num<sumNum):
+ print("Abundant number")
+else:
+  print("Not an Abundant number")
+```
+---
+7. Counted the number of leap and non-leap year in nxt decade.
+ex: 2020 o/p leap year count-2 and non-leap year count-8
+
+```python
+year= int(input())
+LeapCount =0
+NonLeapCount = 0
+
+for i in range(year+1,year+10):
+  if (i%4==0 and i%100!=0) or i%400==0:
+   print(f"{i} is leap year")
+   LeapCount+=1
+   year+=1 
+  year+=1 
+  
+print(f"leap year count {LeapCount}")
+NonLeapCount = 10- LeapCount
+print(f"Non leap year count {NonLeapCount}")
+```
+---
+8.  Geometric Series Sum Calculator.
+ex: inp = 5
+Series: 
+1
++
+0.5
++
+0.25
++
+0.125
++
+0.0625
+1+0.5+0.25+0.125+0.0625
+Sum: 
+1.9375
+1.9375
+```python
+def geometric_series_sum(n):
+    if n <= 0:
+        return 0.00 
+    sum_series = 0.0
+    term = 1.0  
+    for _ in range(n):
+        sum_series += term 
+        term /= 2  
+    return round(sum_series, 2)  
+n = int(input())
+result = geometric_series_sum(n)
+print(f"The sum of the series is: {result:.2f}")
+```
+- If the loop variable is not needed inside the loop (e.g., you’re not using the index for any calculations), using `_` makes the code cleaner and signals that the index is irrelevant.
+- In this, `n = int(input())` int in this is very important as we'll get type error as we can't use `<,>,=` on strings directly.
+---
+9. Sum of Squares of N Natural Numbers
+i/p = 5 o/p = 55 (1+4+9+16+25)
+
+```python
+num = int(input())
+sumNum =0
+term=0
+for i in range(1,num+1):
+  term = i*i
+  sumNum+=term
+if num<0:
+ print("Invalid Input")
+else:
+ print(f"{sumNum:}")
+```
+---
+10. Harmonic series 
+```python
+n = int(input()) 
+sum_series = 0.0
+for i in range(1, n + 1):
+        sum_series += 1 / i  
+if n<0:
+  print("Invalid input")
+else:
+  print(f"The sum of harmonic series is: {sum_series:.2f}")
+```
+---
+11. Count the number of digits in the given number.
+
+```python
+n = int(input()) 
+n = abs(n)
+count =0
+while n!=0:
+      count+=1 
+      n//=10
+print(f"The count of digits is {count}")
+```
+---
+12. Print the square pattern
+
+```python
+n = int(input()) 
+count =0
+if n<=0:
+  print("Invalid Input")
+else:
+  for i in range(1,n+1):
+    for j in range(1,n+1):
+      print("#",end=" ")
+    print()
+```
+---
+13. Pyramid pattern 
+
+```python
+n = int(input()) 
+num=1
+if n<=0:
+  print("Invalid Input")
+else:
+  for i in range(1,n+1):
+    for j in range(1,i+1):
+      print(num,end=" ")
+      num+=1
+    print()
+  ```
+---
+
+14. Swap the first and last digit of the given number.
+
+```python
+n = (input()) 
+len1=len(n)
+first = n[0]
+last = n[len1-1]
+swap = last + n[1:-1] + first
+swapNum = int(swap)
+if swapNum<=0:
+  print("Invalid Input")
+else:
+  print(swap)
+```
+---
+15. Perfect cubes of the consecutive 3 numbers from `n` if it's positive else print Invalid input.
+
+```python
+n = int(input()) 
+cu=0
+if n<=0:
+  print("Invalid Input")
+else:
+  for i in range(n,n+3):
+    cu = pow(i,3)
+    print(cu)
+```
+---
+16. Convert the intergers into roman numerals from range of 1 to 40.
+
+```python
+def int_to_roman(n):
+    roman_map = [
+        (40, 'XL'), (30, 'XXX'), (20, 'XX'), (10, 'X'), 
+        (9, 'IX'), (5, 'V'), (4, 'IV'), (1, 'I')
+    ]
+    
+    roman_numeral = ""
+    for value, symbol in roman_map:  
+        while n >= value:
+            roman_numeral += symbol
+            n -= value
+    return roman_numeral
+
+n = int(input())
+if 1 <= n <= 40:
+    print(f"{n} -> {int_to_roman(n)}")
+else:
+    print("Please enter a number between 1 and 40.")
+```
+---
+17. Sum of N odd and Even numbers ex: 5 means 1+3+5=9(odd) and 2+4 = 6.
+
+```python
+n = int(input())
+odd =0
+evn =0
+for i in range(1,n+1):
+ if i%2==0:
+  evn+=i
+ else:
+  odd+=i
+print(odd,evn)
+```
+---
+18. Narcissist number or not 
+
+```python
+n =(input())
+len1 = len(n)
+temp =int(n)
+num = int(n)
+sum1=0
+while(temp!=0):
+  rem = temp%10
+  res = pow(rem,len1)
+  sum1+=res
+  temp//=10
+  
+if num==sum1:
+ print("Narciss")
+else:
+  print("Not Narciss")
+```
+- `temp//=10` - correct operation to remove the last digit of an integer is integer division if we used `temp/=10` then we will not get intended output.
+
+19. Digital sum of a number
+
+```python
+n =(input())
+num = int(n)
+sum1=0
+while num>0 or sum1>9:
+    if num==0:
+      num=sum1
+      sum1=0
+    sum1+=num%10
+    num//=10
+  
+print(sum1)
+```
+---
+20. Alphabet pattern 
+```
+A 
+B B 
+C C C 
+```
+```python
+n =(input())
+num = int(n)
+ch = 'A'
+for i in range(1,num+1):
+  for j in range(1,i+1):
+    print(f"{ch} ",end="")
+  ch = chr(ord(ch) + 1)
+  print()
+```
+---
+21. Print the next 5 concecutive palindrome from the given number.
+
+```python
+def isPalindrom(n):
+  temp=n 
+  digit =0
+  while temp!=0:
+    rem = temp%10
+    digit = digit*10 + rem
+    temp//=10
+  return n==digit
+  
+num = int(input())
+count = 0 
+if num<0:
+  print("Invalid input")
+else:
+  while count<5:
+    num+=1
+    if isPalindrom(num):
+     print(f"{num} ")
+     count+=1
+```
+---
+22.  it's a palindrome and sum all palindrome
+numbers upto given number as output.
+
+```python
+def isPalindrom(n):
+  temp=n 
+  digit =0
+  while temp!=0:
+    rem = temp%10
+    digit = digit*10 + rem
+    temp//=10
+  return n==digit
+  
+num = int(input())
+sum1 = 0 
+if num<0:
+  print("Invalid input")
+else:
+  for i in range(1,num+1):
+     if(isPalindrom(i)):
+       sum1+=i
+  print(sum1)
+```
+---
+
+23. 
+```
+5 
+5 10 
+5 10 15 
+5 10 15 20 
+```
+
+```python
+num = int(input())
+sum1 = 0 
+if num<0:
+  print("Invalid input")
+else:
+  for i in range(1,num+1):
+     for j in range(1,i+1):
+        print(f"{j*5} ",end="")
+     print()
+```
+---
+24. 

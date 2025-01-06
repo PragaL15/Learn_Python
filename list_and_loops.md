@@ -820,4 +820,18 @@ else:
     print("Please enter a positive integer.")
 ```
 ---
-29. 
+29. Print if it's automorphic number or not.
+    ```python
+    def is_automorphic(num):
+    square = num ** 2
+    return str(square).endswith(str(num))
+    num = int(input("Enter a number: "))
+    if num < 0:
+        print("Invalid Input")
+    else:
+        if is_automorphic(num):
+            print(f"{num} is an Automorphic Number.")
+        else:
+            print(f"{num} is not an Automorphic Number.")
+ 
+  ```

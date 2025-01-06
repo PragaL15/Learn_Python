@@ -805,12 +805,11 @@ taken to reach 1.
 def collatz_steps(n):
     if n <= 0:
         return "Input must be a positive integer."
-    steps = 0
-    while n != 1:
-        if n & 1 == 0: 
-            n //= 2    
-        else:
-            n = n * 3 + 1  
+   while n != 1:
+        if n & 1 == 0:  # If n is even
+            n ^= (n >> 1)  # Simulate division by 2 using XOR
+        else:  # If n is odd
+            n = (n ^ (n << 1)) + 1  # Simulate n = n * 3 + 1 using XOR
         steps += 1
     return steps
 num = int(input())

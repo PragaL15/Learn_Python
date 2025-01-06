@@ -833,5 +833,37 @@ else:
             print(f"{num} is an Automorphic Number.")
         else:
             print(f"{num} is not an Automorphic Number.")
- 
-  ```
+    ```
+ ---
+30. Sum of the prime factors of a number.
+
+    ```python
+        def is_prime(num):
+        if num <= 1:
+            return False
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                return False
+        return True
+        def sum_of_prime_factors(n):
+            if n <= 1:
+                return 0 
+        sum_factors = 0
+        factor = 2
+        while n > 1:
+            if n % factor == 0: 
+                if is_prime(factor):
+                    sum_factors += factor
+                n //= factor  
+            else:
+                factor += 1 
+        return sum_factors
+        num = int(input("Enter a number: "))
+        if num > 0:
+            result = sum_of_prime_factors(num)
+            print(f"The sum of all prime factors of {num} is: {result}")
+        else:
+            print("Invalid Input")
+    ```
+---
+31. 
